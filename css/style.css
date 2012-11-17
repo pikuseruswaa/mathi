@@ -4,6 +4,7 @@ html, body
 	height: 100%;
 	margin: 0px !important;
 	padding: 0px !important;
+	overflow: hidden;
 }
 
 /* Turn.js design code */
@@ -30,10 +31,16 @@ html, body
     background-color:#fff;
     background-size:100% 100%;
 }
+
+#canvas{
+  border:               1px solid black;
+  width:                500px;
+  height:               500px;
+}
 /*
 #book .shadow
 {
-	overflow: hidden;
+	
 	-webkit-box-shadow: -5px -5px 0 5px #000;
 	-moz-box-shadow: -5px -5px 0 5px #000;
 	-ms-box-shadow: -5px -5px 0 5px #000;

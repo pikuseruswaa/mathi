@@ -10,6 +10,16 @@
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
 	<!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
 	<script src="js/turn.js"></script>
+	<script>
+document.addEventListener('DOMContentLoaded', function(){
+      var mate = new PlotMate({
+        container:          'canvas',
+        width:              500,
+        height:             500,
+        spacing:            50
+      });
+    }, false);
+  </script>
 </head> 
 
 <script type="text/javascript" charset="utf-8">
@@ -58,10 +68,7 @@ function onLoad()
 			<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean felis ligula, bibendum ac lacinia lacinia, elementum pretium velit. Etiam convallis mattis nibh sit amet faucibus. Duis elit metus, pretium ut volutpat ac, pharetra porttitor mauris. Ut porta ullamcorper lorem. Ut ultricies turpis vel lorem tincidunt auctor. In lobortis tortor id diam molestie pellentesque. Suspendisse potenti. Ut fermentum aliquet leo, et tincidunt neque dapibus in. Phasellus vulputate aliquet lorem sit amet vulputate.<br><br></b>
 
 			Fusce vitae ipsum at sapien blandit accumsan. Mauris et risus pretium leo pharetra faucibus. Aliquam quis tempor odio. In vel neque massa. Nulla placerat cursus sodales. Mauris a metus libero. Praesent commodo aliquet faucibus. Quisque ut purus quam, in lobortis augue. In hac habitasse platea dictumst. Aliquam condimentum nunc cursus tortor malesuada faucibus. Aenean ac ante tortor. Proin eu est vel lacus venenatis sodales quis quis augue. In cursus venenatis tempus. Curabitur odio dui, laoreet ut fermentum at, dapibus vitae orci. Ut diam sem, pellentesque quis rutrum sed, scelerisque in purus. Cras ac enim et leo suscipit sollicitudin.
-
-			Vestibulum sed eros pellentesque tortor eleifend sagittis. Cras ultricies interdum purus vitae tincidunt. Ut in diam sem. Morbi eget odio est, ac faucibus leo. Proin est dui, mattis in fermentum sit amet, interdum eget justo. Nunc ut leo erat, suscipit iaculis risus. Fusce leo leo, euismod et vestibulum in, sagittis non augue. Nullam eget enim dui. Phasellus augue risus, suscipit in dictum non, pulvinar non turpis. Vestibulum ipsum mauris, hendrerit ut placerat sit amet, lacinia eget lacus. Vivamus sit amet egestas tellus. Duis sit amet elit vitae felis blandit varius ac vel nulla.
-
-			Cras laoreet sapien at magna tincidunt vehicula vel non turpis. Nulla malesuada consectetur sapien, at sodales erat lacinia vitae. Mauris dictum laoreet sem, vitae auctor augue tristique ut. Nulla non metus velit. Aliquam molestie elementum mollis. Nullam nisl ipsum, adipiscing ac volutpat ac, venenatis et mauris. Sed tempor, erat a aliquet ultrices, sem quam pellentesque metus, at pretium nunc nisi in lacus. Phasellus mauris enim, eleifend a facilisis non, ultrices et orci. Suspendisse molestie dapibus elementum. Mauris vel ante diam. Duis quis sapien nibh, sit amet varius justo. Curabitur non sem nisl. Suspendisse dignissim blandit ullamcorper.
+			<div id="canvas"></div>
 			</div>
 		</div>
 		<!--<div> Page 2 </div>
