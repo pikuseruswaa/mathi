@@ -13,11 +13,19 @@ html, body
     height: 100%;
 }
 
+.bookpage
+{
+	text-align: justify;
+	width: 90%;
+	height: 100%;
+}
+
 #book .turn-page
 {
     background-color:#fff;
+    background-size:100% 100%;
 }
-
+/*
 #book .shadow
 {
 	overflow: hidden;
@@ -27,3 +35,4 @@ html, body
 	-o-box-shadow: -5px -5px 0 5px #000;
 	box-shadow: -5px -5px 0 5px #000;
 }
+*/
