@@ -56,6 +56,7 @@ window.PlotMate = function PlotMate(config){
       self.stage.draw();
     });
     
+    self.drawGrid();
     self.stage.draw();
   };
   
@@ -68,6 +69,7 @@ window.PlotMate = function PlotMate(config){
   };
   
   self.addAnchor = function(pos){
+    pos = self.snapToGrid(pos);
     var anchor = new Kinetic.Circle({
       x:                    pos.x,
       y:                    pos.y,
@@ -133,13 +135,57 @@ window.PlotMate = function PlotMate(config){
   };
   
   self.snapToGrid = function(pos){
-    var x = Math.round(pos.x / 25) * 25;
-    var y = Math.round(pos.y / 25) * 25;
-    x = Math.max(x, 25);
-    y = Math.max(y, 25);
-    x = Math.min(x, self.config.width - 25);
-    y = Math.min(y, self.config.height - 25);
+    var x = Math.round(pos.x / config.spacing) * self.config.spacing;
+    var y = Math.round(pos.y / config.spacing) * self.config.spacing;
+    x = Math.max(x, self.config.spacing);
+    y = Math.max(y, self.config.spacing);
+    x = Math.min(x, self.config.width - self.config.spacing);
+    y = Math.min(y, self.config.height - self.config.spacing);
     return {x: x, y: y};
+  }
+  
+  self.drawGrid = function() {
+    var width = self.config.width;
+    var height = self.config.height;
+    var spacing = self.config.spacing;
+    
+    // Some variables
+    var verticalSpacing = Math.floor(width / spacing);
+    var verticalCenter = Math.floor(verticalSpacing / 2);
+    var horizontalSpacing = Math.floor(height / spacing);
+    var horizontalCenter = Math.floor(horizontalSpacing / 2);
+
+    var lineOpacity;
+    var lineDash;
+
+    function drawLines(bounds, max, orientation) {
+      var args = {
+        stroke: "black",
+          strokeWidth: 1,
+      }
+
+      for(var i = 1; i <= bounds.spacing; i++) {
+        if(i == bounds.center) {
+          args.opacity = 1;
+          delete args.dashArray;
+        } else {
+          args.opacity = 0.2;
+          args.dashArray = [5, 5]
+        }
+        args.points = (orientation == "vertical" ? [i*spacing, 0, i*spacing, max] : [0, i*spacing, max, i*spacing]); 
+        self.gridLayer.add(new Kinetic.Line(args));
+      }
+    }
+
+    drawLines({
+      spacing:    verticalSpacing,
+      center:     verticalCenter
+    }, height, "vertical");
+    
+    drawLines({
+      spacing:    horizontalSpacing,
+      center:     horizontalCenter
+    }, width, "horizontal");
   }
   
   init();
