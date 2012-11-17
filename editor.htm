@@ -1,0 +1,31 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8"/>
+  <title>PlotMate</title>
+  <script type="text/javascript" src="js/kinetic-v4.0.5.js"></script>
+  <script type="text/javascript" src="js/PlotMate.js"></script>
+  <style>
+    #canvas{
+      border:               1px solid black;
+      width:                500px;
+      height:               500px;
+    }
+  </style>
+  <script>
+document.addEventListener('DOMContentLoaded', function(){
+      var mate = new PlotMate({
+        container:          'canvas',
+        width:              500,
+        height:             500
+      });
+    }, false);
+  </script>
+</head>
+<body>
+  <div id="canvas"></div>
+  <pre id="log"></pre>
+</body>
+</html>
+
