@@ -8,18 +8,24 @@
   <script type="text/javascript" src="js/PlotMate.js"></script>
   <style>
     #canvas{
+      margin:               auto;
+      margin-top:           100px;
       border:               1px solid black;
-      width:                500px;
-      height:               500px;
+      width:                800px;
+      height:               800px;
+      cursor:               crosshair;
     }
   </style>
   <script>
 document.addEventListener('DOMContentLoaded', function(){
       var mate = new PlotMate({
         container:          'canvas',
-        width:              500,
-        height:             500,
-        spacing:            50
+        width:              800,
+        height:             800,
+        spacing:            80,
+        limit:              3,
+        targetPerimeter:    16,
+        threshold:          0
       });
     }, false);
   </script>
