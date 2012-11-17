@@ -76,7 +76,8 @@ window.PlotMate = function PlotMate(config){
       stoke:                "#777",
       fill:                 "#ddd",
       strokeWidth:          2,
-      draggable:            true
+      draggable:            true,
+      dragBoundFunc:        self.snapToGrid
     });
     anchor.on('mouseover', function(){
       document.body.style.cursor = 'pointer';
@@ -174,6 +175,16 @@ window.PlotMate = function PlotMate(config){
       { spacing : horizontalSpacing,
         center  : horizontalCenter
       }, width, "horizontal");
+  }
+  
+  self.snapToGrid = function(pos){
+    var x = Math.round(pos.x / 25) * 25;
+    var y = Math.round(pos.y / 25) * 25;
+    x = Math.max(x, 25);
+    y = Math.max(y, 25);
+    x = Math.min(x, self.config.width - 25);
+    y = Math.min(y, self.config.height - 25);
+    return {x: x, y: y};
   }
   
   init();
