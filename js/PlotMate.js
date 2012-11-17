@@ -28,8 +28,8 @@ window.PlotMate = function PlotMate(config){
     // Add layers
     self.eventLayer   = new Kinetic.Layer();
     self.gridLayer    = new Kinetic.Layer();
-    self.layer    = new Kinetic.Layer();
-    self.layer  = new Kinetic.Layer();
+    self.layer        = new Kinetic.Layer();
+    self.layer        = new Kinetic.Layer();
     self.stage.add(self.eventLayer);
     self.stage.add(self.gridLayer);
     self.stage.add(self.layer);
@@ -56,6 +56,7 @@ window.PlotMate = function PlotMate(config){
       self.stage.draw();
     });
     
+    self.drawGrid();
     self.stage.draw();
   };
   
@@ -130,6 +131,50 @@ window.PlotMate = function PlotMate(config){
       self.line = null;
     }
   };
+
+  self.drawGrid = function() {
+    var width = self.config.width;
+    var height = self.config.height;
+    
+    // Some variables
+    var spacing = 30;
+    var verticalSpacing = Math.floor(width / spacing);
+    var verticalCenter = Math.floor(verticalSpacing / 2);
+    var horizontalSpacing = Math.floor(height / spacing);
+    var horizontalCenter = Math.floor(horizontalSpacing / 2);
+
+    var lineOpacity;
+    var lineDash;
+
+    function drawLines(bounds, max, orientation) {
+      var args = {
+        stroke: "black",
+          strokeWidth: 1,
+      }
+
+      for(var i = 1; i <= bounds.spacing; i++) {
+        if(i == bounds.center) {
+          args.opacity = 1;
+          delete args.dashArray;
+        } else {
+          args.opacity = 0.2;
+          args.dashArray = [5, 5]
+        }
+        args.points = (orientation == "vertical" ? [i*spacing, 0, i*spacing, max] : [0, i*spacing, max, i*spacing]); 
+        self.gridLayer.add(new Kinetic.Line(args));
+      }
+    }
+
+    drawLines(
+      { spacing : verticalSpacing,
+        center  : verticalCenter
+      }, height, "vertical");
+    
+    drawLines(
+      { spacing : horizontalSpacing,
+        center  : horizontalCenter
+      }, width, "horizontal");
+  }
   
   init();
 }
