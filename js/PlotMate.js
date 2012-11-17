@@ -89,7 +89,7 @@ window.PlotMate = function PlotMate(config){
     });
     anchor.on('dbltap', function(){
       self.anchors.remove(anchor);
-      self.layer.remove(anchor);
+      anchor.remove();
       self.stage.draw();
       anchor = null;
     });
