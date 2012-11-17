@@ -126,7 +126,7 @@ window.PlotMate = function PlotMate(config){
       self.line.moveToBottom();
     }
     if(self.line && self.anchors.length < 2){
-      self.layer.remove(self.line);
+      self.line.remove();
       self.line = null;
     }
   };
