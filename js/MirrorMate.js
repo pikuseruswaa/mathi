@@ -168,21 +168,34 @@ window.MirrorMate = function MirrorMate(config){
   self.winImg.src = "images/check.png";
   self.checkWin = function(){
     var n = self.anchors.length;
-    var good = true;
-    for(var i = 0; i < n; i++){
-      var g = false;
-      var x = self.anchors[i].attrs.x;
-      var y = self.anchors[i].attrs.y;
-      for(var j = 0; j < (self.config.targetPolygon.length / 2); j++) {
-        var x0 = self.config.targetPolygon[j*2] * self.config.spacing + self.config.width / 2;
-        var y0 = self.config.targetPolygon[(j*2) + 1] * - self.config.spacing + self.config.height / 2;
-        log("x: " + x + " y: " + y);
-        log("x0: " + x0 + " y: " + y0);
-        if(x == -x0 && y == y0) {
-          g = true;
-        }
+    var good = false;
+    
+    function checkIndex(start){
+      var retval = true;
+      for(var i = 0; i < n; i++){
+        var index = (i + start) % n;
+        var x = (self.anchors[index].attrs.x - self.config.width / 2) / self.config.spacing;
+        var y = (self.anchors[index].attrs.y - self.config.height / 2) / - self.config.spacing;
+        var x0 = self.config.targetPolygon[i*2];
+        var y0 = self.config.targetPolygon[(i*2) + 1];
+        retval = retval && (x == -x0 && y == y0);
       }
-      good = good && g;
+      if(retval)
+        return true;
+      retval = true;
+      for(var i = 0; i < n; i++){
+        var index = (n - i + start) % n;
+        var x = (self.anchors[index].attrs.x - self.config.width / 2) / self.config.spacing;
+        var y = (self.anchors[index].attrs.y - self.config.height / 2) / - self.config.spacing;
+        var x0 = self.config.targetPolygon[i*2];
+        var y0 = self.config.targetPolygon[(i*2) + 1];
+        retval = retval && (x == -x0 && y == y0);
+      }
+      return retval;
+    }
+    
+    for(var i = 0; i < n; i++){
+      good = good || checkIndex(i);
     }
 
     if(good){
