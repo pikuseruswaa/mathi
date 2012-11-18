@@ -166,7 +166,7 @@ window.PlotMate = function PlotMate(config){
           var x1 = self.anchors[(i+1) % n].attrs.x;
           var y1 = self.anchors[(i+1) % n].attrs.y;
           var len = Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
-          label.setText('' + Math.round(len / self.config.spacing));
+          label.setText('' + Math.round(len * 10 / self.config.spacing) / 10);
           var d = 0;
           if(x0 > x1 && y0 > y1) d = 20;
           if(x0 < x1 && y0 < y1) d = 20;
