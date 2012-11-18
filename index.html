@@ -35,7 +35,7 @@
 				gradients: !$.isTouch,
 				when: {
 					turned: function(e, page) {
-
+						reloadDimensions();
 					}
 				}
 			});
@@ -43,7 +43,7 @@
 		window.addEventListener('orientationchange', handleOrientation, false);
 		function handleOrientation() 
 		{
-			//reloadDimensions();
+			reloadDimensions();
 		}
 	})
   </script>
@@ -52,11 +52,7 @@
 
 function reloadDimensions()
 {
-	$("#book").css(
-	{
-		min-height: 100%;
-		width: 100%;
-	});
+	$("#book").turn("size", window.width(), window.height());
 }
 
 function onLoad()
