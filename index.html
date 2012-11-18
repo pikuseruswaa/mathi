@@ -4,16 +4,17 @@
 	<title>Mathi</title> 
 	
 	<meta name="viewport" content="width=device-width, initial-scale=1"> 
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
 	<link href='http://fonts.googleapis.com/css?family=Open+Sans:300,700,400' rel='stylesheet' type='text/css'>
-	<!--<link rel="stylesheet" href="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.css" />-->
 	<link rel="stylesheet" href="css/style.css" />
 	<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>
-	<!--<script src="http://code.jquery.com/mobile/1.2.0/jquery.mobile-1.2.0.min.js"></script>-->
 	<script src="js/turn.js"></script>
 	<script type="text/javascript" src="js/kinetic.min.js"></script>
     <script type="text/javascript" src="js/PlotMate.js"></script>
 	<script>
-document.addEventListener('DOMContentLoaded', function(){
+	document.addEventListener('DOMContentLoaded', function()
+	{
       var mate = new PlotMate({
         container:          'canvas',
         width:              500,
@@ -21,18 +22,37 @@ document.addEventListener('DOMContentLoaded', function(){
         spacing:            50
       });
     }, false);
-  </script>
-</head> 
+    $(document).bind('touchmove', false);
 
-<script type="text/javascript" charset="utf-8">
+    $(function()
+	{
+		$(window).ready(function() 
+		{
+			$('#book').turn(
+			{
+				display: 'single',
+				acceleration: false,
+				gradients: !$.isTouch,
+				when: {
+					turned: function(e, page) {
+						reloadDimensions();
+					}
+				}
+			});
+		});
+		window.addEventListener('orientationchange', handleOrientation, false);
+		function handleOrientation() 
+		{
+			reloadDimensions();
+		}
+	})
+  </script>
+
+  <script type="text/javascript" charset="utf-8">
 
 function reloadDimensions()
 {
-	$("#book").css(
-	{
-		min-height: 100%;
-		width: 100%;
-	});
+	$("#book").turn("size", $(window).width(), $(window).height());
 }
 
 function onLoad()
@@ -46,55 +66,83 @@ function onLoad()
 			gradients: !$.isTouch,
 			when: {
 				turned: function(e, page) {
-					/*Events on page turned here*/
+
 				}
 			}
 		});
 	});
 	window.addEventListener('orientationchange', handleOrientation, false);
-	handleOrientation();
 	function handleOrientation() 
 	{
-		//reloadDimensions();
+		alert("orientation changed");
 	}
 }
 </script>
+</head> 
 
-<body style="font-family: 'Open Sans', sans-serif;">
+<body>
 	<div id="book">
 		<div style="background-image:url(images/frontpage.jpg);"></div>
-		<div style="background-image:url(images/mockup.jpg);"></div>
-		<div style="background-image:url(images/mockup2.jpg);"></div>
-		<div align="center">
-			<div class="bookpage">
-			<b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean felis ligula, bibendum ac lacinia lacinia, elementum pretium velit. Etiam convallis mattis nibh sit amet faucibus. Duis elit metus, pretium ut volutpat ac, pharetra porttitor mauris. Ut porta ullamcorper lorem. Ut ultricies turpis vel lorem tincidunt auctor. In lobortis tortor id diam molestie pellentesque. Suspendisse potenti. Ut fermentum aliquet leo, et tincidunt neque dapibus in. Phasellus vulputate aliquet lorem sit amet vulputate.<br><br></b>
-
-			Fusce vitae ipsum at sapien blandit accumsan. Mauris et risus pretium leo pharetra faucibus. Aliquam quis tempor odio. In vel neque massa. Nulla placerat cursus sodales. Mauris a metus libero. Praesent commodo aliquet faucibus. Quisque ut purus quam, in lobortis augue. In hac habitasse platea dictumst. Aliquam condimentum nunc cursus tortor malesuada faucibus. Aenean ac ante tortor. Proin eu est vel lacus venenatis sodales quis quis augue. In cursus venenatis tempus. Curabitur odio dui, laoreet ut fermentum at, dapibus vitae orci. Ut diam sem, pellentesque quis rutrum sed, scelerisque in purus. Cras ac enim et leo suscipit sollicitudin.
-			<div id="canvas"></div>
+		<div>
+			<div class="headbar">
+			<h1>Geometri</h1>
+			</div>
+			
+			<div style="width: 100%;">
+				<h2 style="padding-left:25px; margin-bottom: -15px;">Introduktion</h2>
+				<div id="text_1" style=" align: left; text-align: justify; padding-top: 20px; padding-left: 25px; padding-right: 25px; margin-bottom: 50px;">
+					<img src="images/vinkelmaalermm.jpg" style="height: 20%; width: 30%; float: right;">
+					Ordet geometri stammer fra græsk og betyder oprindelig jordmåling.
+					For at lave gode og præcise geometriske tegninger kræves der ordentlig værktøj. 
+					En stram passer, tynd spids blyant, en lang lineal, en tegnetrekant og en vinkelmåler.
+					Passer: bruges til at tegne cirkler og cirkeludsnit med, men en anden meget vigtig funktion er at bruge den som afstandsmåler.
+				</div>
+			</div>
+			<div style="margin-top: 50px; width: 70%; padding-left: 25px; padding-right: 25px;">
+				<h2>Ligedannede og kongruente figurer</h2>
+				<img src="images/trekanter.png">
+				<br>
+				Ligedannede figurer har samme form, men behøver ikke have samme størrelse. Forholdet mellem tilsvarende sider er konstant.
+				De to trekanter er ligedannede.
+				Det skrives sådan:
+				ABC~DEF
+			</div>
+			
+			<div style="padding-left: 40px; padding-right: 40;">
+			<h2>Opgaver:</h2>
+			SO BLA BLA
+			
+			<div style="width: 100%;">
+				<img src="images/handmm.png" style="float: right;">
+				<div id="canvas"></div>
+			</div>			
 			</div>
 		</div>
-		<!--<div> Page 2 </div>
-		<div> Page 3 </div>
-		<div> Page 4 </div>
-		<div> Page 5 </div>
-		<div> Page 6 </div>-->
-	</div>
-	<script type="text/javascript" charset="utf-8">
-	/*$("#book").turn('peel', 'tr');*/
 
-		$(window).ready(function() {
-		$('#book').turn({
-							display: 'single',
-							acceleration: false,
-							gradients: !$.isTouch,
-							//acceleration: true,
-							when: {
-								turned: function(e, page) {
-									/*Events on page turned here*/
-								}
-							}
-						});
-	});
-	</script>
+		<div>
+			<div class="headbar">
+				<h1>Ligedannede og kongruente figurer</h1>
+			</div>
+			
+			<div style="width: 100%; padding-left: 25px;">
+				<h2>Introduktion</h2>
+				<div id="text_1" style=" align: left; text-align: justify; padding-top: 20px; padding-right: 25px; margin-bottom: 50px; width: 70%;">
+					Ligedannede figurer, hvis målestoksforhold er 1:1 kaldes kongruente figurer. Kongruente figurer er altså figurer, der både har samme form og samme størrelse.
+					Kongruente figurer kan flyttes og dækker hinanden.
+				</div>
+			</div>
+			
+			<div style="padding-left: 25px; padding-right: 25px;">
+			<h2>Opgaver:</h2>
+			SO BLA BLA
+			
+			<div style="width: 100%;">
+				<img src="images/handmm.png" style="float: right;">
+				<div id="canvas1"></div>
+			</div>			
+			</div>
+		</div>
+
+
+	</div>
 </body>
-</html>

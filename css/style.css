@@ -2,18 +2,28 @@
 html, body 
 {
 	height: 100%;
+	width: 100%;
 	margin: 0px !important;
 	padding: 0px !important;
 	overflow: hidden;
+	font-family: 'Open Sans', sans-serif;	
 }
 
 /* Turn.js design code */
 #book
+
 {
     width: 100%;
     height: 100%;
 }
 
+#book .turn-page
+{
+    background-color:#fff;
+    background-size:100% 100%;
+}
+
+/* fonts */
 .boldfont
 {
 	font-family: 'Open Sans', sans-serif;
@@ -23,13 +33,30 @@ html, body
 {
 	text-align: justify;
 	width: 90%;
-	height: 100%;
+	min-height: 100%;
 }
 
-#book .turn-page
+/* Page design stuff */
+.headbar
 {
-    background-color:#fff;
-    background-size:100% 100%;
+	background-image: -ms-linear-gradient(top, #E00000 0%, #FF0000 100%);
+	background-image: -moz-linear-gradient(top, #E00000 0%, #FF0000 100%);
+	background-image: -o-linear-gradient(top, #E00000 0%, #FF0000 100%);
+	background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #E00000), color-stop(1, #FF0000));
+	background-image: -webkit-linear-gradient(top, #E00000 0%, #FF0000 100%);
+	background-image: linear-gradient(to bottom, #E00000 0%, #FF0000 100%);
+
+	width: 100%;
+	height: 45px;
+
+	color: #FFFFFF;
+}
+
+.headbar h1
+{
+	font-family: 'Open Sans', sans-serif;
+	margin: 0px 0px 0px 0px;
+	padding-left: 20px;
 }
 
 #canvas{
