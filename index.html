@@ -12,6 +12,7 @@
 	<script src="js/turn.js"></script>
 	<script type="text/javascript" src="js/kinetic.min.js"></script>
     <script type="text/javascript" src="js/PlotMate.js"></script>
+    <script type="text/javascript" src="js/MirrorMate.js"></script>
 	<script>
 	document.addEventListener('DOMContentLoaded', function()
 	{
@@ -24,6 +25,17 @@
         targetPerimeter: 	16,
         threshold: 			0
       });
+
+      var targetPolygon = [-4, -1, -2, 1, -3, -4, -1, -2, -1, 4];
+      var mirror = new MirrorMate({
+        container:          'mirrorcanvas',
+        width:              500,
+        height:             500,
+        spacing:             50,
+        limit:               (targetPolygon.length / 2),
+        targetPolygon:       targetPolygon
+      });
+
     }, false);
     $(document).bind('touchmove', false);
 
@@ -92,7 +104,7 @@ function onLoad()
 			</div>
 			
 			<div style="width: 100%;">
-				<h2 style="padding-left:25px; margin-bottom: -15px;">Introduktion</h2>
+				<h2 style="padding-left:25px; margin-bottom: -15px;">Introduction</h2>
 				<div id="text_1" style=" align: left; text-align: justify; padding-top: 20px; padding-left: 25px; padding-right: 25px; margin-bottom: 50px;">
 					<img src="images/vinkelmaalermm.jpg" style="height: 20%; width: 30%; float: right;">
 					The word geometry originates from the greek language and means earth measurement.
@@ -132,32 +144,31 @@ function onLoad()
 				</div>
 
 				<div style="width: 500px; background-color: #269357; margin: auto; color: #FFFFFF;">
-					<p style="padding-left: 10px; margin-top: 0px; padding-top: 15px; padding-bottom: 15px;"><i>&bull; Tab once to create a point<br>&bull; Tab a point two times to delete it<br>&bull; Press and hold a point to drag it</i></p>
+					<p style="padding-left: 10px; margin-top: 0px; padding-top: 15px; padding-bottom: 15px; font-size: large;"><b><i>&bull; Tab once to create a point<br>&bull; Tab a point two times to delete it<br>&bull; Press and hold a point to drag it</i></b></p>
 				</div>
 			</div>
 		</div>
 
 		<div>
 			<div class="headbar">
-				<h1>Strange assignment is strange.</h1>
+				<h1>Inverting objects</h1>
 			</div>
 			
 			<div style="width: 100%; padding-left: 25px;">
-				<h2>Introduktion</h2>
+				<h2>Introduction</h2>
 				<div id="text_1" style=" align: left; text-align: justify; padding-top: 20px; padding-right: 25px; margin-bottom: 50px; width: 70%;">
-					Ligedannede figurer, hvis målestoksforhold er 1:1 kaldes kongruente figurer. Kongruente figurer er altså figurer, der både har samme form og samme størrelse.
-					Kongruente figurer kan flyttes og dækker hinanden.
+					Inverting objects are like looking into a mirror - It's yourself but inverted. This is often used for Geometry. Objects are easy to invert when placing a mirror on a line, and look at the image.
 				</div>
 			</div>
 			
 			<div style="padding-left: 25px; padding-right: 25px;">
-			<h2>Opgaver:</h2>
-			SO BLA BLA
-			
-			<div style="width: 100%;">
-				<img src="images/handmm.png">
-				<div id="canvas1"></div>
-			</div>
+			<h2>Assignment.</h2>
+			Invert the figure below in the y-axis: <br><br>
+
+				<div style="width: 100%; padding-left -25px;">
+					<img src="images/handmm.png" style="position: fixed; right: -10px;">
+					<div id="mirrorcanvas"></div>
+				</div>
 			</div>
 		</div>
 

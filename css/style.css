@@ -25,7 +25,20 @@ html, body
 
 #canvas
 {
-	margin: auto;
+	border:				1px solid black;
+	width:				500px;
+	height:				500px;
+	margin:				auto;
+}
+
+#mirrorcanvas
+{
+	margin:             auto;
+	margin-top:         100px;
+	border:             1px solid black;
+	/*height:				500px;
+	width:				500px;*/
+	cursor:             crosshair;
 }
 
 /* fonts */
@@ -70,12 +83,6 @@ html, body
 	font-family: 'Open Sans', sans-serif;
 	margin: 0px 0px 0px 0px;
 	padding-left: 20px;
-}
-
-#canvas{
-  border:               1px solid black;
-  width:                500px;
-  height:               500px;
 }
 /*
 #book .shadow
