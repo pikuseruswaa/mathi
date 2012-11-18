@@ -19,7 +19,10 @@
         container:          'canvas',
         width:              500,
         height:             500,
-        spacing:            50
+        spacing:            50,
+        limit: 				3,
+        targetPerimeter: 	16,
+        threshold: 			0
       });
     }, false);
     $(document).bind('touchmove', false);
@@ -85,43 +88,58 @@ function onLoad()
 		<div style="background-image:url(images/frontpage.jpg);"></div>
 		<div>
 			<div class="headbar">
-			<h1>Geometri</h1>
+				<h1>Geometry</h1>
 			</div>
 			
 			<div style="width: 100%;">
 				<h2 style="padding-left:25px; margin-bottom: -15px;">Introduktion</h2>
 				<div id="text_1" style=" align: left; text-align: justify; padding-top: 20px; padding-left: 25px; padding-right: 25px; margin-bottom: 50px;">
 					<img src="images/vinkelmaalermm.jpg" style="height: 20%; width: 30%; float: right;">
-					Ordet geometri stammer fra græsk og betyder oprindelig jordmåling.
-					For at lave gode og præcise geometriske tegninger kræves der ordentlig værktøj. 
-					En stram passer, tynd spids blyant, en lang lineal, en tegnetrekant og en vinkelmåler.
-					Passer: bruges til at tegne cirkler og cirkeludsnit med, men en anden meget vigtig funktion er at bruge den som afstandsmåler.
+					The word geometry originates from the greek language and means earth measurement.
+					To make measurements as precise as possible, good tools are required.
+					A good compass, a sharp pen, a long ruler, a set square and a goniometer.
+					A compass is used for drawing circles and sectors of circles. Another important feature of a compass is used for measuring distances.
 				</div>
 			</div>
 			<div style="margin-top: 50px; width: 70%; padding-left: 25px; padding-right: 25px;">
-				<h2>Ligedannede og kongruente figurer</h2>
+				<h2>Similar and congruent geometric objects</h2>
 				<img src="images/trekanter.png">
 				<br>
-				Ligedannede figurer har samme form, men behøver ikke have samme størrelse. Forholdet mellem tilsvarende sider er konstant.
-				De to trekanter er ligedannede.
-				Det skrives sådan:
-				ABC~DEF
+				Similar shaped objects has the same form, but does not have to be the same size. The relation between equal sides are constant.
+				The two triangles are similar shaped and this is written:
+				ABC~DEF <br>
+				<br>
+				<h2>The perimeter</h2>
+				The perimeter of a triangle is given by the sum of all it's sides. Given a triangle with the sides <i>a</i>, <i>b</i> and <i>c</i>, the perimeter <i>P</i> is given by the formula: <br>
+				<i>P = a + b + c</i> <br>
+				<br>
+				<img src="images/triangle.jpg">
 			</div>
+			</div>
+
+			<div>
+				<div class="headbar">
+					<h1>Geometry</h1>
+				</div>
+
+				<div style="padding-left: 25px; padding-right: 25px;">
+				<h2>Assignment:</h2>
+				Create a triangle with the a perimeter of 16cm<br><br><br>
 			
-			<div style="padding-left: 40px; padding-right: 40;">
-			<h2>Opgaver:</h2>
-			SO BLA BLA
-			
-			<div style="width: 100%;">
-				<img src="images/handmm.png" style="float: right;">
-				<div id="canvas"></div>
-			</div>			
+				<div style="width: 100%; padding-left -25px;">
+					<img src="images/handmm.png" style="position: fixed; right: -10px;">
+					<div id="canvas"></div>
+				</div>
+
+				<div style="width: 500px; background-color: #269357; margin: auto; color: #FFFFFF;">
+					<p style="padding-left: 10px; margin-top: 0px; padding-top: 15px; padding-bottom: 15px;"><i>&bull; Tab once to create a point<br>&bull; Tab a point two times to delete it<br>&bull; Press and hold a point to drag it</i></p>
+				</div>
 			</div>
 		</div>
 
 		<div>
 			<div class="headbar">
-				<h1>Ligedannede og kongruente figurer</h1>
+				<h1>Strange assignment is strange.</h1>
 			</div>
 			
 			<div style="width: 100%; padding-left: 25px;">
@@ -137,12 +155,13 @@ function onLoad()
 			SO BLA BLA
 			
 			<div style="width: 100%;">
-				<img src="images/handmm.png" style="float: right;">
+				<img src="images/handmm.png">
 				<div id="canvas1"></div>
-			</div>			
+			</div>
 			</div>
 		</div>
 
-
+		<div align="center"><h1>THE END</h1></div>
+		<div align="center" style="background-color: #269357;"><h1>BACKCOVER</h1></div>			
 	</div>
 </body>
