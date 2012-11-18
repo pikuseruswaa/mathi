@@ -13,7 +13,7 @@ function log(msg){
 };
 
 window.MirrorMate = function MirrorMate(config){
-  self = this;
+  var self = this;
   self.config = config;
   var init = function(){
     self.stage = new Kinetic.Stage({

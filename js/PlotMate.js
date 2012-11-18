@@ -16,7 +16,7 @@ function log(msg){
 };
 
 window.PlotMate = function PlotMate(config){
-  self = this;
+  var self = this;
   self.config = config;
   var init = function(){
     self.stage = new Kinetic.Stage({
