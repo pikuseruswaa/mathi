@@ -251,7 +251,6 @@ window.MirrorMate = function MirrorMate(config){
       points.push(self.config.targetPolygon[0] * self.config.spacing + self.config.width / 2);
       points.push(self.config.targetPolygon[1] * - self.config.spacing + self.config.height / 2);
 
-      log(points);
       var lines = new Kinetic.Line({
         strokeWidth:          3,
         stroke:               'black',
