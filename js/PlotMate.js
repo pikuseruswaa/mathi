@@ -99,16 +99,26 @@ window.PlotMate = function PlotMate(config){
     anchor.on('dbltap', function(){
       self.anchors.remove(anchor);
       anchor.remove();
-      self.stage.draw();
       anchor = null;
       self.config.limit += 1;
+      if(self.labels){
+        for(var i = 0; i < self.labels.length; i++)
+          self.labels[i].remove();
+        self.labels = null;
+      }
+      self.stage.draw();
     });
     anchor.on('dblclick', function(){
       self.anchors.remove(anchor);
       anchor.remove();
-      self.stage.draw();
       anchor = null;
       self.config.limit += 1;
+      if(self.labels){
+        for(var i = 0; i < self.labels.length; i++)
+          self.labels[i].remove();
+        self.labels = null;
+      }
+      self.stage.draw();
     });
     self.anchors.push(anchor);
     self.layer.add(anchor);
@@ -187,7 +197,7 @@ window.PlotMate = function PlotMate(config){
       self.line = null;
       document.getElementById(self.config.container).style.cursor = 'crosshair';
       if(self.labels){
-        for(var i = 0; i < self.anchors.length; i++)
+        for(var i = 0; i < self.labels.length; i++)
           self.labels[i].remove();
         self.labels = null;
       }
