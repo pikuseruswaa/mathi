@@ -99,22 +99,33 @@ window.PlotMate = function PlotMate(config){
     anchor.on('dbltap', function(){
       self.anchors.remove(anchor);
       anchor.remove();
-      self.stage.draw();
       anchor = null;
       self.config.limit += 1;
+      if(self.labels){
+        for(var i = 0; i < self.labels.length; i++)
+          self.labels[i].remove();
+        self.labels = null;
+      }
+      self.stage.draw();
     });
     anchor.on('dblclick', function(){
       self.anchors.remove(anchor);
       anchor.remove();
-      self.stage.draw();
       anchor = null;
       self.config.limit += 1;
+      if(self.labels){
+        for(var i = 0; i < self.labels.length; i++)
+          self.labels[i].remove();
+        self.labels = null;
+      }
+      self.stage.draw();
     });
     self.anchors.push(anchor);
     self.layer.add(anchor);
     self.stage.draw();
   };
   
+  self.labels = null;
   self.updateLine = function(){
     if(!self.line && self.anchors.length >= 2){
       self.line = new Kinetic.Line({
@@ -141,6 +152,42 @@ window.PlotMate = function PlotMate(config){
         self.checkWin();
         if(document.getElementById(self.config.container).style.cursor == 'crosshair')
           document.getElementById(self.config.container).style.cursor = 'default';
+        if(!self.labels){
+          self.labels = [];
+          for(var i = 0; i < self.anchors.length; i++){
+            var label = new Kinetic.Text({
+              text:         "",
+              fontStyle:    "Bold",
+              textFill:     "red",
+              fontFamily:   "Arial",
+              fontSize:     "22",
+              x:            0,
+              y:            0
+            });
+            self.labels.push(label);
+            self.layer.add(label);
+          }
+        }
+        var n = self.anchors.length;
+        for(var i = 0; i < n; i++){
+          var label = self.labels[i];
+          var x0 = self.anchors[i].attrs.x;
+          var y0 = self.anchors[i].attrs.y;
+          var x1 = self.anchors[(i+1) % n].attrs.x;
+          var y1 = self.anchors[(i+1) % n].attrs.y;
+          var len = Math.sqrt((x0 - x1) * (x0 - x1) + (y0 - y1) * (y0 - y1));
+          label.setText('' + Math.round(len * 10 / self.config.spacing) / 10);
+          var d = 0;
+          if(x0 > x1 && y0 > y1) d = 20;
+          if(x0 < x1 && y0 < y1) d = 20;
+          label.setX(x0 - (x0 - x1) / 2 - d);
+          label.setY(y0 - (y0 - y1) / 2);
+          if(self.winning){
+            label.setTextFill('green');
+          }else{
+            label.setTextFill('red');
+          }
+        }
       }
       self.line.setPoints(points);
       self.line.moveToBottom();
@@ -149,6 +196,11 @@ window.PlotMate = function PlotMate(config){
       self.line.remove();
       self.line = null;
       document.getElementById(self.config.container).style.cursor = 'crosshair';
+      if(self.labels){
+        for(var i = 0; i < self.labels.length; i++)
+          self.labels[i].remove();
+        self.labels = null;
+      }
     }
   };
  
