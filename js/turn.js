@@ -43,7 +43,6 @@ var has3d,
 		backward: ['bl', 'tl'],
 		forward: ['br', 'tr'],
 		all: ['tl', 'bl', 'tr', 'br'],
-		bottomOnly: ['bl', 'br']
 	},
 
 	displays = ['single', 'double'],
@@ -89,7 +88,7 @@ var has3d,
 		// all: Activates all the corners
 		// bottomOnly: Activates only br and bl corners
 
-		corners: 'bottomOnly',
+		corners: 'forward',
 		
 		// Size of the active zone of each corner
 
